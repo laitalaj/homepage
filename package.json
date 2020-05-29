@@ -27,6 +27,7 @@
     "vue-template-compiler": "^2.6.11"
   },
   "scripts": {
+    "build": "parcel build src/index.html",
     "start": "parcel src/index.html",
     "gen_thumbs": "node scripts/gen_thumbs.js"
   },
