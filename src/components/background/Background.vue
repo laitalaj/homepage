@@ -6,6 +6,15 @@
 import TWEEN from "@tweenjs/tween.js";
 
 const baseColor = "black";
+const defaultColors = [{ r: 200, g: 150, b: 0 }];
+const errorColors = [
+  { r: 80, g: 30, b: 0 },
+  { r: 100, g: 20, b: 20 },
+];
+const pdfColors = [
+  { r: 128, g: 64, b: 64 },
+  { r: 200, g: 150, b: 0 },
+];
 const backgroundColors = {
   home: [
     { r: 128, g: 80, b: 48 },
@@ -15,14 +24,10 @@ const backgroundColors = {
     { r: 40, g: 128, b: 40 },
     { r: 64, g: 64, b: 128 },
   ],
-  pdfs: [
-    { r: 128, g: 64, b: 64 },
-    { r: 200, g: 150, b: 0 },
-  ],
-  notfound: [
-    { r: 80, g: 30, b: 0 },
-    { r: 100, g: 20, b: 20 },
-  ],
+  pdf: pdfColors,
+  pdfs: pdfColors,
+  error: errorColors,
+  notfound: errorColors,
   teapot: [
     { r: 255, g: 0, b: 0 },
     { r: 0, g: 255, b: 0 },
@@ -39,6 +44,11 @@ export default {
   },
 
   methods: {
+    getBackgroundColors() {
+      return this.$route.name in backgroundColors
+        ? backgroundColors[this.$route.name]
+        : defaultColors;
+    },
     tweenBackground() {
       const animate = () => {
         if (TWEEN.update()) requestAnimationFrame(animate);
@@ -81,7 +91,7 @@ export default {
   computed: {
     backgroundStyles() {
       const rand = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-      return backgroundColors[this.$route.name].map((r) => {
+      return this.getBackgroundColors().map((r) => {
         return { ...r, angle: rand(0, 359), cutoff: rand(50, 80) };
       });
     },

@@ -69,6 +69,8 @@ export default {
     max-width 60%
 .container
     flex-center column
+.monospace
+    font-family 'Source Code Pro', monospace
 .switch-enter, .switch-leave-to
     opacity 0
 .switch-enter-active, .switch-leave-active

@@ -8,8 +8,3 @@
     </p>
   </span>
 </template>
-
-<style lang="stylus">
-.monospace
-    font-family 'Source Code Pro', monospace
-</style>
