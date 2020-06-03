@@ -34,11 +34,11 @@ export default {
 @require '../../variables-and-functions'
 
 .pdf-link
+    align-self stretch
     background-color content-background-color
     padding 10px
     margin 0px 10px
     width 10vw
-    height 25vh
     border-radius 8px
     font-size small
     text-decoration none
@@ -46,9 +46,10 @@ export default {
     overflow hidden
     transition 0.5s
     &:hover
+        margin-top -1.5em
+        margin-bottom -1.5em
         font-size medium
         width 12vw
-        height 30vh
 .pdf-thumb
     width 100%
 .pdf-sub
